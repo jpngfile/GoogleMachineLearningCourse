@@ -48,6 +48,70 @@ print("just_beyond_primes:", just_beyond_primes)
 
 two = tf.constant(2, dtype=tf.int32)
 primes_doubled = primes * twos
-print("primes_doubled:", primes_doubled)
 
+# Matrix Multiplication
+
+# A 3x4 matrix (2-D tensor)
+x = tf.constant([[5, 2, 4, 3], [5, 1, 6, -2], [-1, 3, -1, -2]], dtype=tf.int32)
+
+# A 4x2 matrix (2-D tensor)
+y = tf.constant([[2, 2], [3, 4], [4, 5], [1, 6]], dtype=tf.int32)
+
+# Multiply 'x' by 'y': result is 3x2 matrix
+matrix_multiply_result = tf.matmul(x, y)
+print(matrix_multiply_result)
+
+# Tensor Reshaping
+
+# Create an 8x2 matrix (2-D tensor)
+matrix = tf.constant(
+        [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12], [13, 14], [15, 16]],
+        dtype=tf.int32)
+
+reshaped_2x8_matrix = tf.reshape(matrix, [2, 8])
+reshaped_4x4_matrix = tf.reshape(matrix, [4, 4])
+
+print("Original matrix (8x2):")
+print(matrix.numpy())
+print("Reshaped matrix (2x8):")
+print(reshaped_2x8_matrix.numpy())
+print("Reshaped matrix (4x4)")
+print(reshaped_4x4_matrix.numpy())
+
+reshaped_2x2x4_tensor = tf.reshape(matrix, [2, 2, 4])
+one_dimensional_vector = tf.reshape(matrix, [16])
+
+print("Original matrix (8x2):")
+print(matrix.numpy())
+print("Reshaped 3-D tensor (2x2x4):")
+print(reshaped_2x2x4_tensor.numpy())
+print("1-D vector:")
+print(one_dimensional_vector.numpy())
+
+# Variables
+
+# Create a scalar variable with the initial value 3
+v = tf.contrib.eager.Variable([3])
+
+# Create a vector variable of shape [1, 4], with random initial values
+# sampled from a normal distribution with mean 1 and standard deviation 0.35
+w = tf.contrib.eager.Variable(tf.random_normal([1, 4], mean=1.0, stddev=0.35))
+
+print("v:", v.numpy())
+print("w:", w.numpy())
+
+tf.assign(v, [7])
+print(v.numpy())
+
+v.assign([5])
+print(v.numpy())
+
+r = tf.contrib.eager.Variable([[1, 2, 3], [4, 5, 6]])
+print(v.numpy())
+
+try:
+    print("Assigning [7, 8, 9] to r")
+    r.assign([7, 8, 9])
+except ValueError as e:
+    print("Exception:", e)
 
