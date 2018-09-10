@@ -1,2 +1,8 @@
 pandas==0.23.4
 tensorflow==1.10.1
+matplotlib
+sklearn
+scipy
+seaborn
+ipython==5.7
+notebook
