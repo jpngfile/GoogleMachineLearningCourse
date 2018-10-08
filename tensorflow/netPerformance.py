@@ -326,7 +326,7 @@ dnn_regressor = train_nn_regression_model(
     my_optimizer=tf.train.AdagradOptimizer(learning_rate=0.0500),
     steps=5000,
     batch_size=50,
-    hidden_units=[10, 10, 8, 5, 5],
+    hidden_units=[10, 10, 5],
     training_examples=normalized_training_examples,
     training_targets=training_targets,
     validation_examples=normalized_validation_examples,
